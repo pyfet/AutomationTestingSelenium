@@ -101,7 +101,6 @@ class Module():
 
     def resizable(self):
         
-        
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
