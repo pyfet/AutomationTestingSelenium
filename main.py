@@ -13,6 +13,10 @@ class PythonOrgSearch(unittest.TestCase):
         module = self.module
         module.droppable()
 
+    def test_resizable(self):
+        module = self.module
+        module.resizable()    
+
     def tearDown(self):
         self.driver.close()
 
