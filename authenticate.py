@@ -1,10 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 import random
-
-
 
 class Authenticate():
     def __init__(self, driver):
@@ -26,8 +23,7 @@ class Authenticate():
         password_element = driver.find_elements_by_name("password")[1]
 
         username_element.send_keys(self.username)
-        password_element.send_keys(self.password)
-        password_element.send_keys(Keys.RETURN)
+        password_element.send_keys(self.password+"\n")
 
     def register(self):
         '''
@@ -47,5 +43,4 @@ class Authenticate():
         email_element.send_keys(self.email)
         city_element.send_keys("Singapore")
         username_element.send_keys(self.username)
-        password_element.send_keys(self.password)
-        password_element.send_keys(Keys.RETURN)
+        password_element.send_keys(self.password+"\n")
