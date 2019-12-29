@@ -1,37 +1,103 @@
 import time
 from helper import *
+from selenium.common.exceptions import *
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Module():
     def __init__(self, driver):
         self.driver = driver
+        self.wait = WebDriverWait(self.driver, 10)
         self.authenticate = Authenticate(self.driver)
 
     # Interaction
     def draggable(self):
-        #TODO: Implement tests for the draggable module
         driver = self.driver        
         authenticate(driver)
-        time.sleep(3)  
+        time.sleep(3)
+
+        move_to_module_page(driver, "draggable.php")
+        
+        locator = lambda id : driver.find_element_by_id(id)
+
+        # tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        drag_and_drop_by_offset(driver, locator("draggable"), 150, 50)
+        time.sleep(2)
+
+        # tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        drag_and_drop_by_offset(driver, locator("draggable"), 0, 50)
+        time.sleep(1)
+        drag_and_drop_by_offset(driver, locator("draggable2"), 50, 0)
+        time.sleep(1)
+        drag_and_drop_by_offset(driver, locator("draggable3"), 250, 250)
+        time.sleep(1)
+        drag_and_drop_by_offset(driver, locator("draggable5"), 50, 50)
+        time.sleep(2)
+
+        # tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        drag_and_drop_by_offset(driver, locator("draggable"), 0, 150)
+        time.sleep(1)
+        drag_and_drop_by_offset(driver, locator("draggable2"), 150, 0)
+        time.sleep(1)
+        drag_and_drop_by_offset(driver, locator("draggable3"), 250, 250)
+        time.sleep(2)
+
+        # tab 4
+        move_to_next_frame(driver, 3, "#example-1-tab-4")
+        click_and_hold(driver, locator("draggable"))
+        time.sleep(2)
+        move_by_offset(driver, 200, 300)
+        time.sleep(2)
+        release(driver)
+        time.sleep(2)
+
+        # tab 5
+        move_to_next_frame(driver, 4, "#example-1-tab-5")
+        drag_and_drop_by_offset(driver, locator("draggable"), 0, 150)
+        time.sleep(2)
 
     def droppable(self):
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
 
-        move_to_module_page(driver, "droppable.php")
+        move_to_module_page(driver, "droppable.php")        
+        locator = lambda id : driver.find_element_by_id(id)
 
-        driver.switch_to.frame(0)
-        
-        element = driver.find_element_by_id("draggable")
-        target = driver.find_element_by_id("droppable")
-        
-        action_chains = ActionChains(driver)
-        action_chains.drag_and_drop(element, target).perform()
+        # tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        drag_and_drop(driver, locator("draggable"), locator("droppable"))
         time.sleep(2)
-        assert "Dropped!" in driver.page_source
 
-        # Leave the frame
-        driver.switch_to_default_content()
+        # tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        drag_and_drop(driver, locator("draggable"), locator("droppable"))
+        time.sleep(1)
+        drag_and_drop_by_offset(driver, locator("draggable-nonvalid"), 50, 150)
+        time.sleep(2)
+
+        # tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        drag_and_drop(driver, locator("draggable"), locator("droppable"))
+        time.sleep(1)
+        drag_and_drop(driver, locator("draggable"), locator("droppable-inner"))
+        time.sleep(1)
+        drag_and_drop(driver, locator("draggable"), locator("droppable2"))
+        time.sleep(1)
+        drag_and_drop(driver, locator("draggable"), locator("droppable2-inner"))
+        time.sleep(1)
+
+        # tab 4
+        move_to_next_frame(driver, 3, "#example-1-tab-4")
+        drag_and_drop(driver, locator("draggable"), locator("droppable"))
+        time.sleep(1)
+        drag_and_drop(driver, locator("draggable2"), locator("droppable"))
+        time.sleep(2)
 
     def resizable(self):
         #TODO: Implement tests for the resizable module
