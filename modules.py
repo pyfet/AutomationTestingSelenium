@@ -106,15 +106,89 @@ class Module():
         time.sleep(3)
         
         move_to_module_page(driver, "resizable.php")
+        
 
-        driver.switch_to.frame(0)
+        handle ="#resizable > div.ui-resizable-handle:nth-child(4)"
+        sideBar ="#resizable > div.ui-resizable-handle.ui-resizable-e"
+        bottomBar="#resizable > div.ui-resizable-handle.ui-resizable-s"
 
-        element = driver.find_element_by_css_selector("div.ui-resizable-handle:nth-child(4)")
- 
-        action_chains=ActionChains(driver)
-        action_chains.click_and_hold(element).move_by_offset(200,200).release().perform()
+        # tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        element = driver.find_element_by_css_selector(sideBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(bottomBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver,element,100,100)
         time.sleep(4)
-        driver.switch_to_default_content() 
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver, element, -250, -250)
+        time.sleep(4)
+
+        # tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        element = driver.find_element_by_css_selector(sideBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(bottomBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(4)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver, element, -250, -250)
+        time.sleep(4)
+
+        # tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        element = driver.find_element_by_css_selector(sideBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(bottomBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver, element, -100, -100)
+        time.sleep(4)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver,element,150,150)
+        time.sleep(4)
+        
+
+        # tab 4
+        move_to_next_frame(driver, 3, "#example-1-tab-4")
+        element = driver.find_element_by_css_selector(sideBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(bottomBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(4)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver, element, -150, -150)
+        time.sleep(4)
+
+        # tab 5
+        move_to_next_frame(driver, 4, "#example-1-tab-5")
+        element = driver.find_element_by_css_selector(sideBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(bottomBar)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(3)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver,element,100,100)
+        time.sleep(4)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver, element, -200, -200)
+        time.sleep(4)
+
+        
     
     def selectable(self):
         #TODO: Implement tests for the selectable module
