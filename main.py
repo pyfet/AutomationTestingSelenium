@@ -16,6 +16,10 @@ class PythonOrgSearch(unittest.TestCase):
     def test_droppable(self):
         self.module.droppable()
 
+    def test_resizable(self):
+        module = self.module
+        module.resizable()    
+
     def tearDown(self):
         self.driver.close()
 
