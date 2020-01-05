@@ -372,8 +372,24 @@ class Module():
 
     # Alert
     def alert(self):
-        #TODO: Implement tests for the alert module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
- 
+        move_to_module_page(driver, "alert.php")
+
+        #tab1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        driver.find_element_by_tag_name('button').click()
+        time.sleep(1)
+        driver.switch_to_alert().accept()
+        time.sleep(2)
+
+        #tab2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        driver.find_element_by_tag_name('button').click()
+        obj = driver.switch_to_alert()
+        time.sleep(1)
+        obj.send_keys("Okonkwo Ifeanyichukwu")
+        time.sleep(1)
+        obj.accept()
+        time.sleep(3) 

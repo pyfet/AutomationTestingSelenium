@@ -25,6 +25,9 @@ class PythonOrgSearch(unittest.TestCase):
 
     def test_dropdown(self):
         self.module.dropdown()
+        
+    def test_alert(self):
+        self.module.alert()
 
     def tearDown(self):
         self.driver.close()
