@@ -216,7 +216,6 @@ class Module():
         time.sleep(3) 
 
     def datepicker(self):
-        #TODO: Implement tests for the datepicker module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
