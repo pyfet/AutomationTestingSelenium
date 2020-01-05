@@ -317,10 +317,44 @@ class Module():
 
     # Frames and Windows
     def frames_and_windows(self):
-        #TODO: Implement tests for the frames and windows module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
+        move_to_module_page(driver, "frames-and-windows.php")
+
+        #tab1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        time.sleep(1)
+        driver.find_element_by_tag_name("a").click()
+        time.sleep(1)
+        driver.switch_to.window(driver.window_handles[0])
+        time.sleep(1)
+
+        #tab2
+    
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        time.sleep(1)
+        driver.find_element_by_tag_name("a").click()
+        time.sleep(1)
+        driver.switch_to.window(driver.window_handles[0])
+        time.sleep(1)
+
+        #tab3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        time.sleep(1)
+        driver.find_element_by_tag_name("a").click()
+        time.sleep(3)
+        driver.switch_to.window(driver.window_handles[0])
+        time.sleep(1)
+
+        #tab4
+        move_to_next_frame(driver, 3, "#example-1-tab-4")
+        time.sleep(1)
+        driver.find_element_by_tag_name("a").click()
+        time.sleep(3)
+        driver.switch_to.window(driver.window_handles[0])
+        time.sleep(2)
+
 
     # Dynamic element
     def submit_button_clicked(self):
