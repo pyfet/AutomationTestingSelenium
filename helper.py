@@ -20,62 +20,62 @@ def authenticate(driver):
             authenticate.login()
 
 def move_to(driver, element, click=False):
-        '''
-        Move to the element matched by selector or passed as argument.
+    '''
+    Move to the element matched by selector or passed as argument.
 
-        Parameters
-        ----------
-        element: str
-            Any valid element
-        click: bool
-            Whether or not to click the element after hovering
-            defaults to False
-        '''
-        try:
-            action = webdriver.ActionChains(driver)
-            action.move_to_element(element)
-            if click:
-                action.click(element)
+    Parameters
+    ----------
+    element: str
+        Any valid element
+    click: bool
+        Whether or not to click the element after hovering
+        defaults to False
+    '''
+    try:
+        action = webdriver.ActionChains(driver)
+        action.move_to_element(element)
+        if click:
+            action.click(element)
 
-            action.perform()
-        except WebDriverException:
-            print("move_to isn't supported with this browser driver.") 
+        action.perform()
+    except WebDriverException:
+        print("move_to isn't supported with this browser driver.") 
 
 def drag_and_drop(driver, element, target):
-        '''
-        Drags an element into another.
+    '''
+    Drags an element into another.
 
-        Parameters
-        ----------
-        element: str
-            source to search for. This can be any valid element.
-            Element to be dragged.
+    Parameters
+    ----------
+    element: str
+        source to search for. This can be any valid element.
+        Element to be dragged.
 
-        target: str
-            target to search for. This can be any valid element
-            Target element to be dragged into.
+    target: str
+        target to search for. This can be any valid element
+        Target element to be dragged into.
 
-        '''
-        webdriver.ActionChains(driver).drag_and_drop(element, target).perform()
+    '''
+    webdriver.ActionChains(driver).drag_and_drop(element, target).perform()
 
 def drag_and_drop_by_offset(driver, element, xoffset, yoffset):
-        '''
-        Drags an element into another.
+    '''
+    Drags an element into another.
 
-        Parameters
-        ----------
-        element: str
-            source to search for. This can be any valid element.
-            Element to be dragged.
+    Parameters
+    ----------
+    element: str
+        source to search for. This can be any valid element.
+        Element to be dragged.
 
-        xoffset: int
-            x-coordinate of drop point
+    xoffset: int
+        x-coordinate of drop point
 
-        yoffset: int
-            y-coordinate of drop point
+    yoffset: int
+        y-coordinate of drop point
 
-        '''
-        webdriver.ActionChains(driver).drag_and_drop_by_offset(element, xoffset, yoffset).perform()
+    '''
+    webdriver.ActionChains(driver).drag_and_drop_by_offset(element, xoffset, yoffset).perform()
 
 def click_and_hold(driver, element):
     webdriver.ActionChains(driver).click_and_hold(element).perform()

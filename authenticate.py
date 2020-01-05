@@ -23,7 +23,8 @@ class Authenticate():
         password_element = driver.find_elements_by_name("password")[1]
 
         username_element.send_keys(self.username)
-        password_element.send_keys(self.password+"\n")
+        password_element.send_keys(self.password)
+        password_element.send_keys(Keys.RETURN)
 
     def register(self):
         '''
@@ -44,3 +45,4 @@ class Authenticate():
         city_element.send_keys("Singapore")
         username_element.send_keys(self.username)
         password_element.send_keys(self.password+"\n")
+        password_element.send_keys(Keys.RETURN)
