@@ -365,10 +365,47 @@ class Module():
 
     # Registration
     def registration(self):
-        #TODO: Implement tests for the registration module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
+        move_to_module_page(driver, "registration.php")
+
+        driver = driver.find_element_by_tag_name('form')
+        driver.find_element_by_name('name').send_keys('Okonkwo')
+        time.sleep(1)
+        driver.find_element_by_xpath('/html/body/section/div/div/div/form/fieldset/p[2]/input').send_keys("Ifeanyichukwu")
+        time.sleep(1)
+        driver.find_elements_by_css_selector("input[type='radio']")[0].click()
+        time.sleep(1)
+        driver.find_elements_by_css_selector("input[type='checkbox']")[1].click()
+        time.sleep(1)
+        driver.find_elements_by_css_selector("input[type='checkbox']")[2].click()
+        time.sleep(1)
+        driver.find_element_by_xpath("//*[text()='India']").click()
+        time.sleep(1)
+        driver.find_element_by_xpath("//*[text()='1']").click()
+        time.sleep(1)
+        driver.find_element_by_xpath("/html/body/section/div/div/div/form/fieldset/div[2]/select/*[text()='1']").click()
+        time.sleep(1)
+        driver.find_element_by_xpath("//*[text()='2014']").click()
+        time.sleep(1)
+        driver.find_element_by_name("phone").send_keys("237658256324")
+        time.sleep(1)
+        driver.find_element_by_name("username").send_keys("wiseman")
+        time.sleep(1)
+        driver.find_element_by_name("email").send_keys("wiseman@email.com")
+        time.sleep(1)
+        driver.find_element_by_xpath("//*[@type='file']").send_keys('/home/ifeanyi/Automation_Testing_Selenium/profile.jpeg')
+        time.sleep(1)
+        driver.find_element_by_tag_name('textarea').send_keys("My name is Ifeanyi\nI am a student of FET in UB\nSpecialty is software \nI am in level 400\nThis is automation testing")
+        time.sleep(1)
+        driver.find_element_by_name("password").send_keys("setpassword")
+        time.sleep(1)
+        driver.find_element_by_name("c_password").send_keys("setpassword")
+        time.sleep(1)
+        driver.find_element_by_xpath("//*[@value='submit']").click()
+        time.sleep(3)
+
 
     # Alert
     def alert(self):

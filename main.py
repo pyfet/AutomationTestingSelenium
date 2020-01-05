@@ -25,7 +25,10 @@ class PythonOrgSearch(unittest.TestCase):
 
     def test_dropdown(self):
         self.module.dropdown()
-        
+
+    def test_registration(self):
+        self.module.registration()
+
     def test_alert(self):
         self.module.alert()
 
