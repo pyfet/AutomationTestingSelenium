@@ -330,10 +330,38 @@ class Module():
         time.sleep(3)
 
     def dropdown(self):
-        #TODO: Implement tests for the dropdown module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
+
+        import random
+
+        move_to_module_page(driver, "dropdown.php")
+
+        # tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        options = len(driver.find_elements_by_xpath("//select/option"))
+        Select(driver.find_element_by_tag_name('select')).select_by_index(random.randint(0, options))
+        time.sleep(1)
+
+        # tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        input_element = driver.find_element_by_tag_name("input")
+        input_element.clear()
+        input_element.send_keys("Cameroon")
+        input_element.send_keys(Keys.RETURN)
+
+        '''
+        #module  has a problem
+        time.sleep(2)
+        driver.find_element_by_tag_name("a").click()
+        driver.find_element_by_tag_name("ul").click()
+        time.sleep(5)
+        options = len(driver.find_elements_by_tag_name("li"))
+        print(options)
+        choice = lambda : driver.find_elements_by_tag_name("li")[(random.randint(0, options))]
+        hover = ActionChains(driver).move_to_element(choice()).click().perform()
+        time.sleep(1)'''
 
     # Registration
     def registration(self):
