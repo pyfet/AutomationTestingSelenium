@@ -3,6 +3,7 @@ from helper import *
 from selenium.common.exceptions import *
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -10,7 +11,6 @@ class Module():
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
-        self.authenticate = Authenticate(self.driver)
 
     # Interaction
     def draggable(self):
@@ -33,7 +33,7 @@ class Module():
         time.sleep(1)
         drag_and_drop_by_offset(driver, locator("draggable2"), 50, 0)
         time.sleep(1)
-        drag_and_drop_by_offset(driver, locator("draggable3"), 250, 250)
+        drag_and_drop_by_offset(driver, locator("draggable3"), 50, 50)
         time.sleep(1)
         drag_and_drop_by_offset(driver, locator("draggable5"), 50, 50)
         time.sleep(2)
@@ -219,7 +219,78 @@ class Module():
         #TODO: Implement tests for the datepicker module
         driver = self.driver        
         authenticate(driver)
-        time.sleep(3) 
+        time.sleep(3)
+        
+        move_to_module_page(driver, "datepicker.php")
+
+        # tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        datepicker = driver.find_element_by_id('datepicker').click()
+
+        time.sleep(2)
+
+        dateWidget = driver.find_element_by_id("ui-datepicker-div")
+        rows = dateWidget.find_elements_by_tag_name("tr")
+        columns = dateWidget.find_elements_by_tag_name("td")
+
+        for cell in columns:
+            if cell.text == '10':
+                cell.find_element_by_link_text('10').click()
+                time.sleep(2)
+                break
+
+        # tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        for i in range(len(driver.find_elements_by_xpath("//select[@id='anim']/option"))):
+            driver.find_elements_by_xpath("//select[@id='anim']/option")[i].click()
+            time.sleep(1)
+            datepicker = driver.find_element_by_id('datepicker').click()
+            time.sleep(2)
+            dateWidget = driver.find_element_by_id("ui-datepicker-div")
+            rows = dateWidget.find_elements_by_tag_name("tr")
+            columns = dateWidget.find_elements_by_tag_name("td")
+
+            for cell in columns:
+                if cell.text == '10':
+                    cell.find_element_by_link_text('10').click()
+                    time.sleep(2)
+                    break
+
+        # tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        datepicker = driver.find_element_by_id('datepicker').click()
+        time.sleep(2)
+        driver.find_elements_by_xpath("//select[@class='ui-datepicker-month']/option")[3].click()
+        time.sleep(1)
+        driver.find_elements_by_xpath("//select[@class='ui-datepicker-year']/option")[3].click()
+        time.sleep(1)
+        dateWidget = driver.find_element_by_id("ui-datepicker-div")
+        rows = dateWidget.find_elements_by_tag_name("tr")
+        columns = dateWidget.find_elements_by_tag_name("td")
+
+        for cell in columns:
+            if cell.text == '10':
+                cell.find_element_by_link_text('10').click()
+                time.sleep(2)
+                break
+
+        # tab 4
+        move_to_next_frame(driver, 3, "#example-1-tab-4")
+        datepicker = driver.find_element_by_id('datepicker').click()
+        time.sleep(2)
+        dateWidget = driver.find_element_by_id("ui-datepicker-div")
+        rows = dateWidget.find_elements_by_tag_name("tr")
+        columns = dateWidget.find_elements_by_tag_name("td")
+
+        for cell in columns:
+            if cell.text == '10':
+                cell.find_element_by_link_text('10').click()
+                time.sleep(2)
+                break
+
+        for i in range(len(driver.find_elements_by_xpath("//select[@id='format']/option"))):
+            driver.find_elements_by_xpath("//select[@id='format']/option")[i].click()
+            time.sleep(1)
 
     def menu(self):
         #TODO: Implement tests for the menu module
