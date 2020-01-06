@@ -1,3 +1,4 @@
+import os
 import time
 from helper import *
 from selenium.common.exceptions import *
@@ -436,6 +437,8 @@ class Module():
         time.sleep(3)
         move_to_module_page(driver, "registration.php")
 
+        file_path = os.path.abspath("assets/profile.jpeg")
+
         driver = driver.find_element_by_tag_name('form')
         driver.find_element_by_name('name').send_keys('Okonkwo')
         time.sleep(1)
@@ -461,7 +464,7 @@ class Module():
         time.sleep(1)
         driver.find_element_by_name("email").send_keys("wiseman@email.com")
         time.sleep(1)
-        driver.find_element_by_xpath("//*[@type='file']").send_keys('/home/ifeanyi/Automation_Testing_Selenium/profile.jpeg')
+        driver.find_element_by_xpath("//*[@type='file']").send_keys(file_path)
         time.sleep(1)
         driver.find_element_by_tag_name('textarea').send_keys("My name is Ifeanyi\nI am a student of FET in UB\nSpecialty is software \nI am in level 400\nThis is automation testing")
         time.sleep(1)
