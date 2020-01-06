@@ -23,6 +23,9 @@ class PythonOrgSearch(unittest.TestCase):
     def test_datepicker(self):
         self.module.datepicker()
 
+    def test_submit_button_clicked(self):
+        self.module.submit_button_clicked()
+
     def test_dropdown(self):
         self.module.dropdown()
 

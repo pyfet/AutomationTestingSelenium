@@ -324,10 +324,42 @@ class Module():
 
     # Dynamic element
     def submit_button_clicked(self):
-        #TODO: Implement tests for the submit button clicked module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
+        move_to_module_page(driver, "submit_button_clicked.php")
+
+        #tab1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        bar = driver.find_element_by_tag_name('input')      
+        bar.send_keys("start")
+        time.sleep(1)      
+        driver.find_element_by_name('submit').click()
+        time.sleep(2)
+
+        #tab2
+        try:
+            move_to_next_frame(driver, 0, "#example-1-tab-2")
+            bar = driver.find_element_by_tag_name('input')      
+            bar.send_keys("end")
+            time.sleep(1)      
+            driver.find_element_by_name('submit').click()
+            time.sleep(2)
+        except ElementNotInteractableException as error:
+            print(error)
+
+
+        #tab3
+        try:
+            move_to_next_frame(driver, 0, "#example-1-tab-3")
+            bar = driver.find_element_by_tag_name('input')      
+            bar.send_keys("complete")
+            time.sleep(1)      
+            driver.find_element_by_name('submit').click()
+            time.sleep(2)
+        except ElementNotInteractableException as error:
+            print(error)
+
 
     def dropdown(self):
         driver = self.driver        
