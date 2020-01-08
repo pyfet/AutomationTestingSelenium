@@ -1,45 +1,108 @@
-import unittest
-from modules import *
+import json
+import pyfiglet
+import automation_tests
 
-class PythonOrgSearch(unittest.TestCase):
+from unittest import main, TestLoader, TestSuite, TextTestRunner
+from textwrap import dedent
+from time import sleep
+from automation_tests import *
 
-    def setUp(self):
-        #self.driver = webdriver.Firefox()
-        self.driver = webdriver.Chrome()
-        self.driver.set_window_size(1920, 1080)        
-        self.driver.get("http://way2automation.com/way2auto_jquery/index.php")
-        self.module = Module(self.driver)
-    
-    def test_draggable(self):
-        self.module.draggable()
-    
-    def test_droppable(self):
-        self.module.droppable()
+def intro():
+    print(pyfiglet.figlet_format("              Hello!!", font = "graffiti"))
+    sleep(0.5)
+    print('-'*100)
+    sleep(0.5)
+    print(pyfiglet.figlet_format("      Automation", font = "slant"))
+    print(pyfiglet.figlet_format("    Testing With", font = "slant"))
+    sleep(0.5)
+    print(pyfiglet.figlet_format("      Selenium", font = "slant"))
+    sleep(0.5)
+    print('-'*100)
+    sleep(1)
+    print('What do you want to test today...')
+    sleep(0.5)
 
-    def test_resizable(self):
-        module = self.module
-        module.resizable()
+def outro():
+    print('\n')
+    print(pyfiglet.figlet_format("  Come Again!!", font = "slant"))
+    sleep(0.5)
+    print(pyfiglet.figlet_format("      Bye!!", font = "speed"))
 
-    def test_datepicker(self):
-        self.module.datepicker()
+def options():
+    options = json.load(open('options.json'))    
+    for key, value in options.items():
+        print(f'    {key}: {value}')
+    valid = False
+    while not valid:
+        try:
+            module = str(input('\n  > '))
+            module = module.lower()
+            if module in options:
+                valid = True
+            elif module in options.values():
+                valid = True
+            else:
+                print("Please enter a valid choice")
+        except EOFError:
+            pass        
 
-    def test_frames_and_windows(self):
-        self.module.frames_and_windows()
+    sleep(0.5)
+    print(
+        dedent('''
+            Select a web browser(beta):
+                1. chrome
+                2. firefox'''
+            )
+    )
+    valid = False
+    while not valid:
+        try:
+            browser = str(input('\n  > '))
+            browser = browser.lower()
+            if browser == '1' or browser == 'chrome':
+                valid = True
+            elif browser == '2' or browser == 'firefox':
+                valid = True
+            else:
+                print("Please enter a valid choice")
+        except EOFError:
+            pass
+        
+    return module, browser
 
-    def test_submit_button_clicked(self):
-        self.module.submit_button_clicked()
+def test_module(choice, browser):
+    options = json.load(open('options.json'))
 
-    def test_dropdown(self):
-        self.module.dropdown()
+    if choice in options:
+        choice = options.get(choice)
 
-    def test_registration(self):
-        self.module.registration()
+    if choice == 'all':
+        main(module=automation_tests)
+    else:
+        suite = unittest.TestSuite()
+        suite.addTest(AutomationTest("test_"+choice))
+        runner = unittest.TextTestRunner()
+        runner.run(suite)
 
-    def test_alert(self):
-        self.module.alert()
-
-    def tearDown(self):
-        self.driver.close()
+def test_more():
+    try:
+        choice = str(input("Do you wish to continue[yes|No]? > "))
+        choice = choice.lower()
+        if choice == 'y' or choice == "yes":
+            return True
+        elif choice == "n" or choice == "no":
+            return False
+    except EOFError:
+        pass    
 
 if __name__ == "__main__":
-    unittest.main()
+    try:
+        intro()                
+        flag = True
+        while flag:
+            module, browser = options()
+            test_module(module, browser)
+            flag = test_more()
+
+    except KeyboardInterrupt:
+        outro()
