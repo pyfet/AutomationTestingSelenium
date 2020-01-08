@@ -19,6 +19,8 @@ def intro():
     sleep(0.5)
     print('-'*100)
     sleep(1)
+    print('Performing test on https://www.way2automation.com/way2auto_jquery/index.php#load_box') 
+    print('using python-selenium(https://selenium-python.readthedocs.io/)')
     print('What do you want to test today...')
     sleep(0.5)
 
