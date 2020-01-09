@@ -188,9 +188,7 @@ class Module():
         element = driver.find_element_by_css_selector(handle)
         drag_and_drop_by_offset(driver, element, -200, -200)
         time.sleep(4)
-
-        
-    
+  
     def selectable(self):
         #TODO: Implement tests for the selectable module
         driver = self.driver        
@@ -203,7 +201,6 @@ class Module():
         authenticate(driver)
         time.sleep(3) 
 
-    # Widget
     def accordion(self):
         #TODO: Implement tests for the accordion module
         driver = self.driver        
@@ -356,7 +353,6 @@ class Module():
         driver.switch_to.window(driver.window_handles[0])
         time.sleep(2)
 
-
     # Dynamic element
     def submit_button_clicked(self):
         driver = self.driver        
@@ -394,7 +390,6 @@ class Module():
             time.sleep(2)
         except ElementNotInteractableException as error:
             print(error)
-
 
     def dropdown(self):
         driver = self.driver        
@@ -474,7 +469,6 @@ class Module():
         time.sleep(1)
         driver.find_element_by_xpath("//*[@value='submit']").click()
         time.sleep(3)
-
 
     # Alert
     def alert(self):
