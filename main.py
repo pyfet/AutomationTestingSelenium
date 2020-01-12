@@ -93,7 +93,7 @@ def simulate_login(browser):
                 driver.close()
                 valid = True
             elif process == '':
-                valid = False
+                valid = True
             elif process == 'exit':
                 outro()
                 sys.exit()

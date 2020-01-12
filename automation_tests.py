@@ -23,6 +23,9 @@ class AutomationTest(unittest.TestCase):
 
     def test_datepicker(self):
         self.module.datepicker()
+    
+    def test_tooltip(self):
+        self.module.tooltip()
 
     def test_frames_and_windows(self):
         self.module.frames_and_windows()

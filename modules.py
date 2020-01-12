@@ -308,10 +308,45 @@ class Module():
         time.sleep(3) 
 
     def tooltip(self):
-        #TODO: Implement tests for the tooltip module
         driver = self.driver        
         authenticate(driver)
         time.sleep(3)
+        move_to_module_page(driver, "tooltip.php")
+        action = ActionChains(driver)
+        
+        #tab1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        time.sleep(1)
+        
+        t11 = driver.find_element_by_xpath("/html/body/p/a")
+        move_to(driver, t11)
+        time.sleep(2)
+
+        t12 = driver.find_element_by_xpath("/html/body/p[2]/a")
+        move_to(driver, t12)
+        time.sleep(2)
+
+        t13 = driver.find_element_by_xpath("/html/body/p[4]/input")
+        move_to(driver, t13)
+        time.sleep(2)
+
+        #tab2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        time.sleep(1)
+
+        t21 = driver.find_element(by=By.ID, value='show-option')
+        move_to(driver, t21)
+        time.sleep(2)
+
+        t22 = driver.find_element_by_id("hide-option")
+        move_to(driver, t22)
+        time.sleep(2)
+
+        t23 = driver.find_element_by_id("open-event")
+        move_to(driver, t23)
+        time.sleep(2)
+
+        
 
     # Frames and Windows
     def frames_and_windows(self):
