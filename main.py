@@ -10,6 +10,8 @@ from time import sleep
 from automation_tests import *
 from count import *
 
+website = 'https://www.way2automation.com/way2auto_jquery/index.php'
+
 def intro():
     print(pyfiglet.figlet_format("              Hello!!", font = "graffiti"))
     sleep(0.5)
@@ -22,7 +24,7 @@ def intro():
     sleep(0.5)
     print('-'*100)
     sleep(1)
-    print('Performing test on https://www.way2automation.com/way2auto_jquery/index.php#load_box') 
+    print(f'Performing test on {website}') 
     print('using python-selenium(https://selenium-python.readthedocs.io/)')
     print('What do you want to test today(Enter `exit` if you want to quit)...')
     sleep(0.5)
@@ -62,17 +64,55 @@ def select_browser():
     sleep(1)
     return browser
 
+def simulate_login(browser):
+    print("\nYou can simulate Signup and Signin (press ENTER to pass)")
+    print(dedent('''
+        1. SignUp
+        2. SignIn
+    '''))
+    
+    valid = False
+    while not valid:
+        try:
+            process = str(input(' > '))
+            process = process.lower()
+            if process == '1' or process == 'signup':
+                driver = eval(browser)
+                driver.set_window_size(1920, 1080)
+                driver.get(website)
+                authenticate = Authenticate(driver)
+                authenticate.register()
+                driver.close()
+                valid = True
+            elif process == '2' or process == 'signin':
+                driver = eval(browser)
+                driver.set_window_size(1920, 1080)
+                driver.get(website)
+                authenticate = Authenticate(driver)
+                authenticate.login()
+                driver.close()
+                valid = True
+            elif process == '':
+                valid = False
+            elif process == 'exit':
+                outro()
+                sys.exit()
+            else:
+                print("Please enter a valid choice")
+        except EOFError:
+            pass
+
 def count_modules(browser):
     valid = False
     while not valid:
         try:
-            count_modules = str(input('If you want to count available modules to test enter `count`(press ENTER to pass) > '))
+            count_modules = str(input('\nWould you like to count available modules? [y|N] (press ENTER to pass) > '))
             count_modules = count_modules.lower()
-            if count_modules == 'count':
+            if count_modules == 'y' or count_modules == 'yes':
                 print('counting...    ---    ', end='')
                 print(total_modules(browser))
                 valid = True
-            elif count_modules == '':
+            elif count_modules == 'n' or count_modules == 'no' or count_modules == '':
                 valid = True
             elif count_modules == 'exit':
                 outro()
@@ -91,7 +131,7 @@ def count_modules(browser):
     valid = False
     while not valid:
         try:
-            section = str(input('Enter a section name to get the number of modules present there > '))    
+            section = str(input('Enter a section name to get the number of modules present there (press ENTER to pass) > '))    
             section = section.replace(' ', '_')
             section = section.lower()
             if section in options:
@@ -115,7 +155,7 @@ def count_modules(browser):
     sleep(1)
 
 def select_module():    
-    print("Enter a module to test")
+    print("\nEnter a module to test")
     options = json.load(open('options.json'))
     for key, value in options.items():
         print(f'    {key}: {value}')
@@ -166,6 +206,7 @@ if __name__ == "__main__":
         flag = True
         while flag:
             browser = select_browser()
+            simulate_login(browser)
             count_modules(browser)
             module = select_module()
             test_module(module, browser)

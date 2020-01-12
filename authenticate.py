@@ -22,8 +22,8 @@ class Authenticate():
         username_element = driver.find_elements_by_name("username")[1]
         password_element = driver.find_elements_by_name("password")[1]
 
-        username_element.send_keys(self.username)
-        password_element.send_keys(self.password)
+        username_element.send_keys("qwerty")
+        password_element.send_keys("qwerty")
         password_element.send_keys(Keys.RETURN)
 
     def register(self):

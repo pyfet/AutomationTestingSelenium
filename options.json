@@ -1,1 +1,20 @@
-{"1": "all", "2": "draggable", "3": "droppable", "4": "resizable", "5": "selectable", "6": "sortable", "7": "accordion", "8": "autocomplete", "9": "datepicker", "10": "menu", "11": "slider", "12": "tabs", "13": "tooltip", "14": "frames_and_windows", "15": "submit_button_clicked", "16": "dropdown", "17": "registration", "18": "alert"}
+{
+    "1": "all", 
+    "2": "draggable", 
+    "3": "droppable", 
+    "4": "resizable", 
+    "5": "selectable", 
+    "6": "sortable", 
+    "7": "accordion", 
+    "8": "autocomplete", 
+    "9": "datepicker", 
+    "10": "menu", 
+    "11": "slider", 
+    "12": "tabs", 
+    "13": "tooltip", 
+    "14": "frames_and_windows", 
+    "15": "submit_button_clicked", 
+    "16": "dropdown", 
+    "17": "registration", 
+    "18": "alert"
+}

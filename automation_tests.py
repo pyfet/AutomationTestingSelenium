@@ -1,9 +1,11 @@
+import time
 import unittest
 from modules import *
 
 class AutomationTest(unittest.TestCase):
 
     def setUp(self):
+        self.startTime = time.time()
         #self.driver = webdriver.Firefox()
         self.driver = webdriver.Chrome()
         self.driver.set_window_size(1920, 1080)
@@ -39,6 +41,8 @@ class AutomationTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
+        t = time.time() - self.startTime
+        print('%s: %.3f' % (self.id(), t))
 
 if __name__ == "__main__":
     unittest.main()
