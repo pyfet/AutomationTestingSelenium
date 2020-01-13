@@ -4,23 +4,23 @@ import automation_tests
 import sys
 
 from unittest import main, TestLoader, TestSuite, TextTestRunner
+from clint.textui import colored
+from automation_tests import *
 from selenium import webdriver
 from textwrap import dedent
 from time import sleep
-from automation_tests import *
 from count import *
 
 website = 'https://www.way2automation.com/way2auto_jquery/index.php'
 
 def intro():
-    print(pyfiglet.figlet_format("              Hello!!", font = "graffiti"))
-    sleep(0.5)
     print('-'*100)
     sleep(0.5)
-    print(pyfiglet.figlet_format("      Automation", font = "slant"))
-    print(pyfiglet.figlet_format("    Testing With", font = "slant"))
+    print(colored.green(pyfiglet.figlet_format("      Automation", font = "slant")))
+    print(colored.green(pyfiglet.figlet_format("      Testing in", font = "slant")))
     sleep(0.5)
-    print(pyfiglet.figlet_format("      Selenium", font = "slant"))
+    print(colored.green(pyfiglet.figlet_format("  python using", font = "slant")))
+    print(colored.green(pyfiglet.figlet_format("      Selenium", font = "slant")))
     sleep(0.5)
     print('-'*100)
     sleep(1)
@@ -31,9 +31,9 @@ def intro():
 
 def outro():
     print('\n')
-    print(pyfiglet.figlet_format("  Come Again!!", font = "slant"))
+    print(colored.yellow(pyfiglet.figlet_format("  Come Again!!", font = "slant")))
     sleep(0.5)
-    print(pyfiglet.figlet_format("      Bye!!", font = "speed"))
+    print(colored.yellow(pyfiglet.figlet_format("      Bye!!", font = "speed")))
 
 def select_browser():
     print(
@@ -65,10 +65,10 @@ def select_browser():
     return browser
 
 def simulate_login(browser):
-    print("\nYou can simulate Signup and Signin (press ENTER to pass)")
+    print("\nYou can simulate Signup and Signin " + colored.red("(press ENTER to skip)"))
     print(dedent('''
-        1. SignUp
-        2. SignIn
+            1. SignUp
+            2. SignIn
     '''))
     
     valid = False
@@ -106,7 +106,7 @@ def count_modules(browser):
     valid = False
     while not valid:
         try:
-            count_modules = str(input('\nWould you like to count available modules? [y|N] (press ENTER to pass) > '))
+            count_modules = str(input("\nWould you like to count available modules? [yes|No]" + colored.red("(press ENTER to skip)")))
             count_modules = count_modules.lower()
             if count_modules == 'y' or count_modules == 'yes':
                 print('counting...    ---    ', end='')
@@ -131,7 +131,7 @@ def count_modules(browser):
     valid = False
     while not valid:
         try:
-            section = str(input('Enter a section name to get the number of modules present there (press ENTER to pass) > '))    
+            section = str(input("\nEnter a section name to get the number of modules present there" + colored.red("(press ENTER to skip)")))
             section = section.replace(' ', '_')
             section = section.lower()
             if section in options:
@@ -180,13 +180,16 @@ def select_module():
     return module
 
 def test_module(choice, browser):
-    if choice == 'all':
-        main(module=automation_tests)
-    else:
-        suite = unittest.TestSuite()
-        suite.addTest(AutomationTest("test_"+choice))
-        runner = unittest.TextTestRunner()
-        runner.run(suite)
+    try:
+        if choice == 'all':
+            main(module=automation_tests)
+        else:
+            suite = unittest.TestSuite()
+            suite.addTest(AutomationTest("test_"+choice))
+            runner = unittest.TextTestRunner()
+            runner.run(suite)
+    except ValueError as error:
+        print("Oops!!, module test not available")    
 
 def test_more():
     try:
@@ -202,12 +205,12 @@ def test_more():
 
 if __name__ == "__main__":
     try:
-        intro()                
+        intro()
+        browser = select_browser()
+        simulate_login(browser)
+        count_modules(browser)
         flag = True
         while flag:
-            browser = select_browser()
-            simulate_login(browser)
-            count_modules(browser)
             module = select_module()
             test_module(module, browser)
             flag = test_more()

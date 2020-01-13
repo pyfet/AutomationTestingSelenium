@@ -14,10 +14,9 @@ def move_to_module_page(driver, href):
 
 def authenticate(driver):
     authenticate = Authenticate(driver)
+    time.sleep(1)
     if "Registration Form" in driver.page_source:
-        authenticate.register()
-        if "Username or Password already exists." in driver.page_source:
-            authenticate.login()
+        authenticate.login()
 
 def move_to(driver, element, click=False):
     '''

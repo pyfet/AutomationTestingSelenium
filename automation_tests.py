@@ -42,6 +42,15 @@ class AutomationTest(unittest.TestCase):
     def test_alert(self):
         self.module.alert()
 
+    def test_selectable(self):
+        self.module.selectable() 
+
+    def test_accordion(self):
+        self.module.accordion()
+
+    def test_autocomplete(self):
+        self.module.autocomplete() 
+
     def tearDown(self):
         self.driver.close()
         t = time.time() - self.startTime

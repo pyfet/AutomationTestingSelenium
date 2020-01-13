@@ -190,10 +190,95 @@ class Module():
         time.sleep(4)
   
     def selectable(self):
-        #TODO: Implement tests for the selectable module
         driver = self.driver        
         authenticate(driver)
-        time.sleep(3) 
+        time.sleep(3)
+
+        move_to_module_page(driver, "selectable.php")
+        
+        #tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        item1= driver.find_element_by_css_selector("#selectable > li:nth-child(1)")
+        item1.click()
+        time.sleep(1)
+        item2= driver.find_element_by_css_selector("#selectable > li:nth-child(2)")
+        item2.click()
+        time.sleep(1)
+        item3= driver.find_element_by_css_selector("#selectable > li:nth-child(3)")
+        item3.click()
+        time.sleep(1)
+        item4= driver.find_element_by_css_selector("#selectable > li:nth-child(4)")
+        item4.click()
+        time.sleep(1)
+        item5= driver.find_element_by_css_selector("#selectable > li:nth-child(5)")
+        item5.click()
+        time.sleep(1)
+        item6= driver.find_element_by_css_selector("#selectable > li:nth-child(6)")
+        item6.click()
+        time.sleep(1)
+        item7= driver.find_element_by_css_selector("#selectable > li:nth-child(7)")
+        item7.click()
+        time.sleep(1)
+
+        #tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        item1= driver.find_element_by_css_selector("#selectable > li:nth-child(1)")
+        item1.click()
+        time.sleep(1)
+        item2= driver.find_element_by_css_selector("#selectable > li:nth-child(2)")
+        item2.click()
+        time.sleep(1)
+        item3= driver.find_element_by_css_selector("#selectable > li:nth-child(3)")
+        item3.click()
+        time.sleep(1)
+        item4= driver.find_element_by_css_selector("#selectable > li:nth-child(4)")
+        item4.click()
+        time.sleep(1)
+        item5= driver.find_element_by_css_selector("#selectable > li:nth-child(5)")
+        item5.click()
+        time.sleep(1)
+        item6= driver.find_element_by_css_selector("#selectable > li:nth-child(6)")
+        item6.click()
+        time.sleep(1)
+        item7= driver.find_element_by_css_selector("#selectable > li:nth-child(7)")
+        item7.click()
+        time.sleep(1)
+        item8= driver.find_element_by_css_selector("#selectable > li:nth-child(8)")
+        item8.click()
+        time.sleep(1)
+        item9= driver.find_element_by_css_selector("#selectable > li:nth-child(9)")
+        item9.click()
+        time.sleep(1)
+        item10= driver.find_element_by_css_selector("#selectable > li:nth-child(10)")
+        item10.click()
+        time.sleep(1)
+        item11= driver.find_element_by_css_selector("#selectable > li:nth-child(11)")
+        item11.click()
+        time.sleep(1)
+        item12= driver.find_element_by_css_selector("#selectable > li:nth-child(12)")
+        item12.click()
+        time.sleep(1)
+        
+        #tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        item1= driver.find_element_by_css_selector("#selectable > li:nth-child(1)")
+        item1.click()
+        time.sleep(1)
+        item2= driver.find_element_by_css_selector("#selectable > li:nth-child(2)")
+        item2.click()
+        time.sleep(1)
+        item3= driver.find_element_by_css_selector("#selectable > li:nth-child(3)")
+        item3.click()
+        time.sleep(1)
+        item4= driver.find_element_by_css_selector("#selectable > li:nth-child(4)")
+        item4.click()
+        time.sleep(1)
+        item5= driver.find_element_by_css_selector("#selectable > li:nth-child(5)")
+        item5.click()
+        time.sleep(1)
+        item6= driver.find_element_by_css_selector("#selectable > li:nth-child(6)")
+        item6.click()
+        time.sleep(1)
 
     def sortable(self):
         #TODO: Implement tests for the sortable module
@@ -202,16 +287,148 @@ class Module():
         time.sleep(3) 
 
     def accordion(self):
-        #TODO: Implement tests for the accordion module
         driver = self.driver        
         authenticate(driver)
-        time.sleep(3) 
+        time.sleep(3)
+
+        move_to_module_page(driver, "accordion.php")
+
+        handle ="#accordion-resizer > div.ui-resizable-handle:nth-child(4)"
+        sideBar ="#accordion-resizer > div.ui-resizable-handle.ui-resizable-e"
+        bottomBar="#accordion-resizer > div.ui-resizable-handle.ui-resizable-s" 
+
+        #tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        accord2= driver.find_element_by_css_selector("#ui-id-3")
+        accord2.click()
+        time.sleep(3)
+        accord3= driver.find_element_by_css_selector("#ui-id-5")
+        accord3.click()
+        time.sleep(3)
+        accord4= driver.find_element_by_css_selector("#ui-id-7")
+        accord4.click()
+        time.sleep(3)
+
+        # tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        accord2= driver.find_element_by_css_selector("#ui-id-3")
+        accord2.click()
+        time.sleep(2)
+        accord3= driver.find_element_by_css_selector("#ui-id-5")
+        accord3.click()
+        time.sleep(2)
+        accord4= driver.find_element_by_css_selector("#ui-id-7")
+        accord4.click()
+        time.sleep(2)
+        toggle = driver.find_element_by_css_selector("#toggle")
+        toggle.click()
+        time.sleep(1)  
+        accord3= driver.find_element_by_css_selector("#ui-id-5")
+        accord3.click()
+        time.sleep(2)
+        accord2= driver.find_element_by_css_selector("#ui-id-3")
+        accord2.click()
+        time.sleep(2)
+        accord1= driver.find_element_by_css_selector("#ui-id-1")
+        accord1.click()
+        time.sleep(2)        
+
+        # tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        element = driver.find_element_by_css_selector(sideBar)
+        drag_and_drop_by_offset(driver,element,50,50)
+        time.sleep(3)
+        accord2= driver.find_element_by_css_selector("#ui-id-3")
+        accord2.click()
+        time.sleep(2)
+        element = driver.find_element_by_css_selector(bottomBar)
+        drag_and_drop_by_offset(driver,element,50,50)
+        time.sleep(3)
+        accord3= driver.find_element_by_css_selector("#ui-id-5")
+        accord3.click()
+        time.sleep(2)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver,element,50,50)
+        time.sleep(4)
+        accord4= driver.find_element_by_css_selector("#ui-id-7")
+        accord4.click()
+        time.sleep(2)
+        element = driver.find_element_by_css_selector(handle)
+        drag_and_drop_by_offset(driver, element, -150, -150)
+        time.sleep(4)
 
     def autocomplete(self):
-        #TODO: Implement tests for the autocomplete module
         driver = self.driver        
         authenticate(driver)
+        time.sleep(3)
+
+        move_to_module_page(driver, "autocomplete.php")
+                
+        #tab 1
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        elem = driver.find_element_by_css_selector("#tags")
+        elem.send_keys("C+")
         time.sleep(3) 
+        auto_complete = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete[0].click()
+        time.sleep(3)
+        elem.clear()
+        elem.send_keys("Ja")
+        time.sleep(3) 
+        auto_complete3 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete3[0].click()
+        time.sleep(3)
+        elem.clear()
+        elem.send_keys("JavaSc")
+        time.sleep(3) 
+        auto_complete2 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete2[0].click()
+        time.sleep(3)
+
+        #tab 2
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        elem = driver.find_element_by_css_selector("#tags")
+        elem.send_keys("Ap")
+        time.sleep(3) 
+        auto_complete = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete[0].click()
+        time.sleep(3)
+        elem.send_keys("Ba")
+        time.sleep(3) 
+        auto_complete3 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete3[0].click()
+        time.sleep(3)
+        elem.send_keys("For")
+        time.sleep(3) 
+        auto_complete2 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete2[0].click()
+        time.sleep(3)
+
+        #tab 3
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        elem1 = driver.find_element_by_tag_name("input")
+        elem1.clear()
+        elem1.send_keys("ant")
+        time.sleep(3) 
+        auto_complete = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete[0].click()
+        time.sleep(3)
+        elem1.clear()
+        elem1.send_keys("annh")
+        time.sleep(3) 
+        auto_complete3 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete3[0].click()
+        time.sleep(3)
+        elem1.clear()
+        elem1.send_keys("andreas")
+        time.sleep(3)
+        auto_complete2 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete2[0].click() 
+        elem1.send_keys(" john")
+        time.sleep(3) 
+        auto_complete4 = driver.find_elements_by_css_selector("#ui-id-1")
+        auto_complete4[0].click()
+        time.sleep(3)
 
     def datepicker(self):
         driver = self.driver        
@@ -316,7 +533,6 @@ class Module():
         
         #tab1
         move_to_next_frame(driver, 0, "#example-1-tab-1")
-        time.sleep(1)
         
         t11 = driver.find_element_by_xpath("/html/body/p/a")
         move_to(driver, t11)
@@ -332,7 +548,6 @@ class Module():
 
         #tab2
         move_to_next_frame(driver, 1, "#example-1-tab-2")
-        time.sleep(1)
 
         t21 = driver.find_element(by=By.ID, value='show-option')
         move_to(driver, t21)
@@ -344,9 +559,7 @@ class Module():
 
         t23 = driver.find_element_by_id("open-event")
         move_to(driver, t23)
-        time.sleep(2)
-
-        
+        time.sleep(2)        
 
     # Frames and Windows
     def frames_and_windows(self):
@@ -448,17 +661,19 @@ class Module():
         input_element.send_keys("Cameroon")
         input_element.send_keys(Keys.RETURN)
 
-        '''
         #module  has a problem
-        time.sleep(2)
-        driver.find_element_by_tag_name("a").click()
-        driver.find_element_by_tag_name("ul").click()
-        time.sleep(5)
-        options = len(driver.find_elements_by_tag_name("li"))
-        print(options)
-        choice = lambda : driver.find_elements_by_tag_name("li")[(random.randint(0, options))]
-        hover = ActionChains(driver).move_to_element(choice()).click().perform()
-        time.sleep(1)'''
+        try:
+            time.sleep(2)
+            driver.find_element_by_tag_name("a").click()
+            driver.find_element_by_tag_name("ul").click()
+            time.sleep(5)
+            options = len(driver.find_elements_by_tag_name("li"))
+            print(options)
+            choice = lambda : driver.find_elements_by_tag_name("li")[(random.randint(0, options))]
+            hover = ActionChains(driver).move_to_element(choice()).click().perform()
+            time.sleep(1)
+        except ElementNotInteractableException as error:
+            print(error)
 
     # Registration
     def registration(self):
@@ -516,13 +731,13 @@ class Module():
         move_to_next_frame(driver, 0, "#example-1-tab-1")
         driver.find_element_by_tag_name('button').click()
         time.sleep(1)
-        driver.switch_to_alert().accept()
+        driver.switch_to.alert().accept()
         time.sleep(2)
 
         #tab2
         move_to_next_frame(driver, 1, "#example-1-tab-2")
         driver.find_element_by_tag_name('button').click()
-        obj = driver.switch_to_alert()
+        obj = driver.switch_to.alert()
         time.sleep(1)
         obj.send_keys("Okonkwo Ifeanyichukwu")
         time.sleep(1)
