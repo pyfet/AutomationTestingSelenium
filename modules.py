@@ -293,19 +293,83 @@ class Module():
         #TODO: Implement tests for the menu module
         driver = self.driver        
         authenticate(driver)
-        time.sleep(3) 
+        time.sleep(3)
+        move_to_module_page(driver, "menu.php")
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        time.sleep(3)
+        
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+
+        menu = driver.find_element_by_css_selector("#ui-id-2")
+        actions.move_to_element(menu).perform()
+        time.sleep(3)
+        menu = driver.find_element_by_css_selector("#ui-id-3")
+        actions.move_to_element(menu).perform()
+        time.sleep(3)
+        menu = driver.find_element_by_css_selector("#ui-id-4")
+        actions.move_to_element(menu).perform()
+        time.sleep(3)
+        menu = driver.find_element_by_css_selector("#ui-id-3")
+        actions.move_to_element(menu).perform()
+        time.sleep(3)
+        menu = driver.find_element_by_css_selector("#ui-id-2")
+        actions.move_to_element(menu).perform()
+        time.sleep(3)
+
+        move_to_next_frame(driver, 0, "#example-1-tab-2")
+        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+
+        #submenu = driver.find_element_by_css_selector("#ui-id-2")
+        #action.move_to_element(submenu).perform()
+
+        move_to_next_frame(driver, 0, "#example-1-tab-3")
+        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+        
+        
+
+
 
     def slider(self):
         #TODO: Implement tests for the slider module
         driver = self.driver        
         authenticate(driver)
-        time.sleep(3) 
+        time.sleep(3)
+        move_to_module_page(driver, "slider.php")
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        time.sleep(3)
+        slider = driver.find_element_by_css_selector("#slider-range-max > span")
+        slider.click()
+        slider.send_keys(Keys.RIGHT)
+        time.sleep(2)
+        slider.send_keys(Keys.RIGHT)
+        time.sleep(2)
+        slider.send_keys(Keys.RIGHT)
+        time.sleep(2)
+        slider.send_keys(Keys.RIGHT)
+        time.sleep(2)
+        slider.send_keys(Keys.LEFT)
+        time.sleep(2)
+        slider.send_keys(Keys.LEFT)
+        time.sleep(2)
+        slider.send_keys(Keys.RIGHT)
+        time.sleep(2)
+        
 
     def tabs(self):
-        #TODO: Implement tests for the tabs module
+        #TODO: Implement tests for the tabs module<span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%;"></span>
         driver = self.driver        
         authenticate(driver)
         time.sleep(3) 
+        move_to_module_page(driver, "tabs.php")
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        
 
     def tooltip(self):
         #TODO: Implement tests for the tooltip module

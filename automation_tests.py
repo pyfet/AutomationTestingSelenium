@@ -19,8 +19,20 @@ class AutomationTest(unittest.TestCase):
     def test_resizable(self):
         self.module.resizable()
 
+    def test_sortable(self):
+        self.module.sortable()
+
     def test_datepicker(self):
         self.module.datepicker()
+
+    def test_menu(self):
+        self.module.menu()
+
+    def test_slider(self):
+        self.module.slider()
+
+    def test_tabs(self):
+        self.module.tabs()
 
     def test_frames_and_windows(self):
         self.module.frames_and_windows()
@@ -39,6 +51,7 @@ class AutomationTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
+
 
 if __name__ == "__main__":
     unittest.main()
