@@ -201,6 +201,56 @@ class Module():
         authenticate(driver)
         time.sleep(3) 
 
+        move_to_module_page(driver, "sortable.php")
+        move_to_next_frame(driver, 0, "#example-1-tab-1")
+        time.sleep(3)
+
+        From = driver.find_element_by_xpath("//*[@id='sortable']/li[1]")	
+        to = driver.find_element_by_xpath("//*[@id='sortable']/li[3]")
+
+        drag_and_drop(driver, From, to)
+        time.sleep(1)
+
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
+        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+
+        From = driver.find_element_by_css_selector("#sortable1 > li:nth-child(1)")	
+        to = driver.find_element_by_css_selector("#sortable2 > li:nth-child(1)")
+
+        drag_and_drop(driver, From, to)
+        time.sleep(1)
+
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
+        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+
+        From = driver.find_element_by_css_selector("#sortable > li:nth-child(1)")	
+        to = driver.find_element_by_css_selector("#sortable > li:nth-child(5)")
+
+        drag_and_drop(driver, From, to)
+        time.sleep(1)
+
+        move_to_next_frame(driver, 3, "#example-1-tab-4")
+        time.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+
+        From = driver.find_element_by_css_selector("body > div:nth-child(1) > div > div.portlet-header.ui-sortable-handle.ui-widget-header.ui-corner-all")	
+        to = driver.find_element_by_css_selector("body > div:nth-child(2) > div > div.portlet-header.ui-sortable-handle.ui-widget-header.ui-corner-all")
+
+        drag_and_drop(driver, From, to)
+        time.sleep(1)
+
+
+
+
+
+
+
+
     def accordion(self):
         #TODO: Implement tests for the accordion module
         driver = self.driver        
@@ -302,30 +352,40 @@ class Module():
         actions = ActionChains(driver)
 
         menu = driver.find_element_by_css_selector("#ui-id-2")
-        actions.move_to_element(menu).perform()
-        time.sleep(3)
+        move_to(driver, menu)
+        time.sleep(1)
         menu = driver.find_element_by_css_selector("#ui-id-3")
-        actions.move_to_element(menu).perform()
-        time.sleep(3)
+        move_to(driver, menu)
+        time.sleep(1)
         menu = driver.find_element_by_css_selector("#ui-id-4")
-        actions.move_to_element(menu).perform()
-        time.sleep(3)
+        move_to(driver, menu)
+        time.sleep(1)
         menu = driver.find_element_by_css_selector("#ui-id-3")
-        actions.move_to_element(menu).perform()
-        time.sleep(3)
+        move_to(driver, menu)
+        time.sleep(1)
         menu = driver.find_element_by_css_selector("#ui-id-2")
-        actions.move_to_element(menu).perform()
-        time.sleep(3)
+        move_to(driver, menu)
+        time.sleep(1)
 
-        move_to_next_frame(driver, 0, "#example-1-tab-2")
+        move_to_next_frame(driver, 1, "#example-1-tab-2")
         time.sleep(3)
         wait = WebDriverWait(driver, 10)
         actions = ActionChains(driver)
 
-        #submenu = driver.find_element_by_css_selector("#ui-id-2")
-        #action.move_to_element(submenu).perform()
+        menu = driver.find_element_by_css_selector("#ui-id-1")
+        move_to(driver, menu)
+        time.sleep(1)
+        menu = driver.find_element_by_css_selector("#ui-id-2")
+        move_to(driver, menu)
+        time.sleep(1)
+        menu = driver.find_element_by_css_selector("#ui-id-3")
+        move_to(driver, menu)
+        time.sleep(1)
+        menu = driver.find_element_by_css_selector("#ui-id-4")
+        move_to(driver, menu)
+        time.sleep(1)
 
-        move_to_next_frame(driver, 0, "#example-1-tab-3")
+        move_to_next_frame(driver, 2, "#example-1-tab-3")
         time.sleep(3)
         wait = WebDriverWait(driver, 10)
         actions = ActionChains(driver)
@@ -368,7 +428,13 @@ class Module():
         move_to_module_page(driver, "tabs.php")
         move_to_next_frame(driver, 0, "#example-1-tab-1")
         time.sleep(3)
-        wait = WebDriverWait(driver, 10)
+
+        driver.find_element_by_css_selector("#ui-id-1").click()
+        time.sleep(1)
+        driver.find_element_by_css_selector("#ui-id-2").click()
+        time.sleep(1)
+        driver.find_element_by_css_selector("#ui-id-3").click()
+        time.sleep(1)
         
 
     def tooltip(self):
