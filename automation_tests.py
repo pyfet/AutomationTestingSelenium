@@ -67,7 +67,3 @@ class AutomationTest(unittest.TestCase):
         self.driver.close()
         t = time.time() - self.startTime
         print('%s: %.3f' % (self.id(), t))
-
-
-if __name__ == "__main__":
-    unittest.main()
